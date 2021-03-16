@@ -1,7 +1,4 @@
 .idea/
 model_api/src/__pycache__/
 db_api/data/database.rdb
-*.hdf5
-*.h5
-*.pth
 *.csv

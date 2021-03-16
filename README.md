@@ -1,6 +1,8 @@
 # MLServe - Simple, dockerized serving of Machine Learning models
 
-The goal of this project is to develop a plug&play containerised deployment and serving of the developed Machine Learning models using (for example, can be any) onnx format for models, Fast API for request, redis for keeping current data and docker for keeping it nice and tight.
+The goal of this project is to develop a plug&play containerised deployment and serving of the developed Machine Learning models. 
+
+It is done by using (for example, can be any) onnx format for models, Fast API for request, redis for keeping current data and docker for keeping it nice and tight. For now the toy model is CNN MNIST classifier but it can be easily extended for other models and/or regressors/other types.
 
 ## How does it work:
 Project contains three independent docker containers:
@@ -22,7 +24,9 @@ Those containers can communicate only within specified docker network bridge `st
        1. ```APP_TYPE=ui``` selected you can go to ```localhost:5000``` to use UI
        2. ```APP_TYPE=cli``` post requests via cli (for example: ```python web_api/tests/test_{MODEL_NAME}_cli_request.py {IMAGE_PATH}.png```)
 6. You can check whether the containers are running properly by: ```./check_health.sh``` or peek into them by: ```docker logs CONTAINER_NAME```
-7. To stop containers just run: ```./stop_all.sh```
+7. To test containers separately just run: `python tests/{TEST_NAME}.py` within containers dirs.
+8. To stop containers just run: ```./stop_all.sh```
+
 ## Variables:
    1. ```MODEL_NAME``` for now is available in two options: ```mnist``` and ```leukemia``` if different name is specified container won't start.
    2. ```APP_TYPE``` for now is available in two options: ```ui``` (streamlit) and ```cli``` (usual cmd) if different name is specified container won't start.

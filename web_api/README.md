@@ -13,4 +13,4 @@ How to run this manually (if you don't want to ```start_all.sh```):
 1. ```cd``` here
 2. ```docker build -t web_api .```
 3. ```docker run --rm --name web_api -p 5000:5000 --net stack_api -t -i web_api APP_TYPE MODEL_TYPE``` (leave ```--rm``` if you want to delete it after closing container)
-4. Check posts requesting by running twice ```python test_request.py ../model_api/src/img.png``` - first one should make prediction in ```model_api``` conainer and the second one should get it's already existing prediction from the db handled by ```redis``` container.
+4. Check posts requesting by running twice ```python ./tests/test_mnist_cli_request.py  ../model_api/src/img.png``` - first one should make prediction in ```model_api``` conainer and the second one should get it's already existing prediction from the db handled by ```redis``` container for the CLI UI version.
