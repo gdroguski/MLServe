@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+streamlit
+opencv-python
+numpy
+Pillow
+redis
+requests

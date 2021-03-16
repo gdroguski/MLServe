@@ -1,0 +1,6 @@
+opencv-python
+numpy
+onnxruntime-gpu
+fastapi
+uvicorn
+requests

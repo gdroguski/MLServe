@@ -1,0 +1,26 @@
+import argparse
+import requests
+import cv2
+import numpy as np
+
+
+def load_image(image_path: str) -> np.ndarray:
+    image_path: str = image_path
+    image: np.ndarray = cv2.imread(image_path)
+    image: np.ndarray = cv2.resize(image, dsize=(450, 450), interpolation=cv2.INTER_CUBIC)
+    image: np.ndarray = image.reshape(-1, *image.shape[::-1]).astype(np.float32)
+
+    return image
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("img_path", help="specify path for image to classify", type=str)
+
+    args = parser.parse_args()
+    image_arr: np.ndarray = load_image(args.img_path)
+
+    data = {'image_arr': image_arr.tolist()}
+    post_response = requests.post(url='http://0.0.0.0:5000/web_api', json=data)
+    print(post_response)
+    print(post_response.json())
